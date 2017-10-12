@@ -13,6 +13,21 @@ define(["jquery","template","cookie"],function($,template){
       // var html=template('profile_tpl',userifon)//要添加的模板id,添加的数据
       $("#user-ifon").html(template('profile-tpl',userifon));
     }
+    
+    //点击退出登录
+    $("#btn-logout").click(function(){
+      //向后台发送ajax请求
+      $.ajax({
+        url:'/api/logout',
+        type:'post',
+        success:function(data){
+          if(data.code == 200){
+            location.href="/dashboard/login";
+          }
+          
+        }
+      })
+    })
   })
 })
 
